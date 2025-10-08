@@ -1,19 +1,32 @@
-
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const match = document.cookie.match(/theme=(dark|light)/);
+    if (match) {
+      setDarkMode(match[1] === "dark");
+    }
+  }, []);
+
+  useEffect(() => {
+    document.cookie = `theme=${darkMode ? "dark" : "light"}; path=/; max-age=${
+      60 * 60 * 24 * 365
+    }`;
+  }, [darkMode]);
+
   const [steps, setSteps] = useState(["Step 1", "Step 2", "Step 3"]);
   const [activeTab, setActiveTab] = useState("Step 2");
   const [contentTitle, setContentTitle] = useState("Tabs Content");
   const [contentMap, setContentMap] = useState({
-    "Step 1": "1. Install VSCode\n2. Install Chrome\n3. Install Node\n4. etc",
-    "Step 2": "1. Configure project\n2. Add dependencies\n3. Run dev server",
-    "Step 3": "1. Test output\n2. Adjust layout\n3. Submit assignment",
+    "Step 1": "1. Download Windows\n2. Install Windows\n3. Enjoy Windows\n4. etc",
+    "Step 2": "1. Reload Windows\n2. Reinstall Windows\n3. Restart Computer",
+    "Step 3": "1. Test Windows\n2. Adjust Windows\n3. Enjoy Windows",
   });
   const [output, setOutput] = useState("");
   const [newStep, setNewStep] = useState("");
@@ -107,22 +120,36 @@ export default function Home() {
     setOutput(html);
   };
 
+  const downloadHTML = () => {
+    if (!output) {
+      alert("Please generate the output first!");
+      return;
+    }
+    const blob = new Blob([output], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "tabs_page.html";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div
       className={`min-h-screen flex flex-col font-sans ${
         darkMode ? "bg-gray-900 text-white" : "bg-white text-black"
       }`}
     >
-      {/* ===== Header Component ===== */}
+      {}
       <Header darkMode={darkMode} />
 
-      {/* ===== Main Content ===== */}
+      {}
       <main className="flex-1 flex flex-col md:flex-row gap-20 p-8 justify-center items-start">
-        {/* Left: Tabs Headers */}
+        {}
         <section className="flex flex-col items-center w-1/4">
           <h2 className="text-lg font-semibold mb-4">Tabs Headers</h2>
 
-          {/* Add Step Input */}
+          {}
           <div className="flex gap-2 mb-4">
             <input
               type="text"
@@ -143,7 +170,7 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Step Buttons */}
+          {}
           <div className="flex flex-col gap-2">
             {steps.map((step) => (
               <div key={step} className="flex items-center gap-2">
@@ -170,7 +197,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Middle: Editable Tabs Content */}
+        {}
         <section className="flex flex-col items-center w-1/3">
           <h2 className="text-lg font-semibold mb-4">Table of Content</h2>
           <input
@@ -195,34 +222,56 @@ export default function Home() {
           />
         </section>
 
-        {/* Right: Output Section */}
+        {}
         <section className="flex flex-col items-center gap-4 w-1/3">
-          <button
-            className={`border px-3 py-1 rounded ${
-              darkMode ? "border-gray-600" : "border-gray-400"
-            }`}
-            onClick={generateHTML}
-          >
-            Output
-          </button>
+          <div className="flex gap-2">
+            <button
+              className={`border px-3 py-1 rounded ${
+                darkMode ? "border-gray-600" : "border-gray-400"
+              }`}
+              onClick={generateHTML}
+            >
+              Output
+            </button>
+
+            <button
+              className={`border px-3 py-1 rounded ${
+                darkMode ? "border-gray-600" : "border-gray-400"
+              }`}
+              onClick={downloadHTML}
+            >
+              Download HTML
+            </button>
+          </div>
 
           <div
             className={`border p-3 w-[400px] h-[250px] overflow-auto font-mono text-xs ${
-              darkMode
-                ? "bg-gray-900 text-green-400"
-                : "bg-gray-200 text-black"
+              darkMode ? "bg-gray-900 text-green-400" : "bg-gray-200 text-black"
             }`}
           >
             <pre>{output}</pre>
           </div>
 
-
-
-
+          {}
+          <div className="flex items-center gap-3 mt-6">
+            <span className="text-sm">{darkMode ? "Dark" : "Light"} Mode</span>
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`relative inline-flex h-6 w-12 items-center rounded-full transition-colors duration-300 ${
+                darkMode ? "bg-blue-600" : "bg-gray-300"
+              }`}
+            >
+              <span
+                className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform duration-300 ${
+                  darkMode ? "translate-x-6" : "translate-x-1"
+                }`}
+              />
+            </button>
+          </div>
         </section>
       </main>
 
-      {/* ===== Footer Component ===== */}
+      {}
       <Footer />
     </div>
   );
