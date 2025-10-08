@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -18,14 +17,14 @@ export default function Header() {
 
   return (
     <header className="border-b border-gray-400 bg-gray-800 text-white dark:bg-gray-900">
-      {/* Top Header */}
+      {}
       <div className="flex justify-between items-center px-6 py-4">
         <div className="text-xl font-bold">Assignment 1</div>
 
         <div className="flex items-center gap-4">
           <div className="text-sm">Student No: 22586710</div>
 
-          {/* Burger Icon */}
+          {}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex flex-col justify-between w-6 h-5 cursor-pointer sm:hidden"
@@ -49,7 +48,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Collapsible Navigation */}
+      {}
       <nav
         className={`border-t border-gray-600 px-6 py-3 text-sm transition-all duration-300 
           ${menuOpen ? "block" : "hidden"} sm:block`}
@@ -60,7 +59,7 @@ export default function Header() {
               key={item.name}
               onClick={() => {
                 router.push(item.path);
-                setMenuOpen(false); // collapse after click
+                setMenuOpen(false);
               }}
               className="hover:underline focus:underline text-left sm:text-center"
             >
@@ -72,3 +71,4 @@ export default function Header() {
     </header>
   );
 }
+
