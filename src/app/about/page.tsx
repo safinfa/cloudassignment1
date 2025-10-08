@@ -1,12 +1,10 @@
-
-// app/about/page.tsx
 "use client";
 
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 export default function About() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <div
@@ -32,11 +30,9 @@ export default function About() {
             <span className="font-semibold">Project Title:</span> Assignment 1 – Tabs Generator
           </p>
           <p>
-            <span className="font-semibold">Description:</span> This project was built using
-            Next.js and Tailwind CSS. It allows users to create, edit, and display
-            custom tabs with editable content dynamically. The application demonstrates
-            client-side interactivity, navigation between pages, and dark/light mode
-            functionality using React state and Tailwind classes.
+            <span className="font-semibold">Description:</span> This project is built using next js and tailwind css.
+            it lets users to create, edit, and display tabs with the content inside able to be edited dynamically. 
+            this can also navigate through the pages and also have a dark and light mode
           </p>
         </div>
 
