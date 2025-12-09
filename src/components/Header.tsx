@@ -10,7 +10,7 @@ export default function Header() {
   const navItems = [
     { name: "Tabs", path: "/" },
     { name: "Pre-lab Questions", path: "/coming_soon" },
-    { name: "Escape Room", path: "/coming_soon" },
+    { name: "Escape Room", path: "/escape_room" },
     { name: "Coding Races", path: "/coming_soon" },
     { name: "About", path: "/about" },
   ];

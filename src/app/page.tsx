@@ -80,6 +80,7 @@ export default function Home() {
   <header>
     <h1>Assignment 1</h1>
     <p>Student No: 22586710</p>
+
   </header>
 
   <nav>
