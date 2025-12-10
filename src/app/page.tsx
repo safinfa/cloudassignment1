@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -10,11 +9,14 @@ export default function Home() {
   const [steps, setSteps] = useState(["Step 1", "Step 2", "Step 3"]);
   const [activeTab, setActiveTab] = useState("Step 2");
   const [contentTitle, setContentTitle] = useState("Tabs Content");
-  const [contentMap, setContentMap] = useState({
+
+  // ✅ FIXED TYPE (THIS WAS THE DOCKER ERROR)
+  const [contentMap, setContentMap] = useState<Record<string, string>>({
     "Step 1": "1. Install VSCode\n2. Install Chrome\n3. Install Node\n4. etc",
     "Step 2": "1. Configure project\n2. Add dependencies\n3. Run dev server",
     "Step 3": "1. Test output\n2. Adjust layout\n3. Submit assignment",
   });
+
   const [output, setOutput] = useState("");
   const [newStep, setNewStep] = useState("");
 
@@ -80,7 +82,6 @@ export default function Home() {
   <header>
     <h1>Assignment 1</h1>
     <p>Student No: 22586710</p>
-
   </header>
 
   <nav>
@@ -216,10 +217,6 @@ export default function Home() {
           >
             <pre>{output}</pre>
           </div>
-
-
-
-
         </section>
       </main>
 
