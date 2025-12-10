@@ -34,7 +34,7 @@ export async function GET() {
         </style>
       </head>
       <body>
-        <h1>🏆 Escape Room Leaderboard</h1>
+        <h1>Escape Room Leaderboard</h1>
         <p>Generated dynamically by a Lambda function</p>
 
         <table>
