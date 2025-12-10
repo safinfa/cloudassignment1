@@ -3,14 +3,19 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function Header() {
+// ✅ ADD THIS TYPE
+type HeaderProps = {
+  darkMode?: boolean;
+};
+
+export default function Header({ darkMode }: HeaderProps) {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
     { name: "Tabs", path: "/" },
     { name: "Pre-lab Questions", path: "/coming_soon" },
-    { name: "Escape Room", path: "/coming_soon" },
+    { name: "Escape Room", path: "/escape_room" },
     { name: "Coding Races", path: "/coming_soon" },
     { name: "About", path: "/about" },
   ];
