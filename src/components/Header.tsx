@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-// ✅ ADD THIS TYPE
+
 type HeaderProps = {
   darkMode?: boolean;
 };

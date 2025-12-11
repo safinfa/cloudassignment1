@@ -34,9 +34,9 @@ export async function POST(request: Request) {
   }
 }
 
-// ✅ FETCH ESCAPE HISTORY (GET) — WITH INSTRUMENTATION
+
 export async function GET() {
-  console.log("📤 GET /api/escape — Request received at:", new Date().toISOString());
+  console.log("GET /api/escape — Request received at:", new Date().toISOString());
 
   try {
     const results = await prisma.escapeResult.findMany({
@@ -45,12 +45,12 @@ export async function GET() {
       },
     });
 
-    console.log("✅ Escape history fetched:", results.length, "records");
+    console.log("Escape history fetched:", results.length, "records");
 
     return NextResponse.json(results);
 
   } catch (error) {
-    console.error("❌ GET /api/escape error:", error);
+    console.error("GET /api/escape error:", error);
 
     return NextResponse.json(
       { error: "Failed to fetch escape history" },

@@ -10,7 +10,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("Step 2");
   const [contentTitle, setContentTitle] = useState("Tabs Content");
 
-  // ✅ FIXED TYPE (THIS WAS THE DOCKER ERROR)
+
   const [contentMap, setContentMap] = useState<Record<string, string>>({
     "Step 1": "1. Install VSCode\n2. Install Chrome\n3. Install Node\n4. etc",
     "Step 2": "1. Configure project\n2. Add dependencies\n3. Run dev server",

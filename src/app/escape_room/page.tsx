@@ -28,7 +28,7 @@ export default function EscapeRoomPage() {
   const [leaderboard, setLeaderboard] = useState<EscapeResult[]>([]);
   const [playerRank, setPlayerRank] = useState<number | null>(null);
 
-  // ✅ FETCH LEADERBOARD
+  // FETCH LEADERBOARD
   const fetchLeaderboard = async () => {
     try {
       const res = await fetch("/api/escape", { cache: "no-store" });
@@ -101,7 +101,7 @@ export default function EscapeRoomPage() {
     return `${min}:${sec < 10 ? "0" : ""}${sec}`;
   };
 
-  // ✅ SAVE RESULT
+  // SAVE RESULT
   const saveResult = async (result: "WIN" | "FAIL", timeTaken: number | null) => {
     try {
       await fetch("/api/escape", {
@@ -124,7 +124,7 @@ export default function EscapeRoomPage() {
         setInput("");
         setMessage("");
         setShowTask(false);
-      } else setMessage("❌ Fix the JavaScript output.");
+      } else setMessage("Fix the JavaScript output.");
     }
 
     if (stage === 2) {
@@ -133,7 +133,7 @@ export default function EscapeRoomPage() {
         setInput("");
         setMessage("");
         setShowTask(false);
-      } else setMessage("❌ Write a loop that reaches 1000.");
+      } else setMessage("Write a loop that reaches 1000.");
     }
 
     if (stage === 3) {
@@ -155,9 +155,9 @@ export default function EscapeRoomPage() {
         setEscaped(true);
         setRunning(false);
         setTime(0);
-        setMessage("🎉 YOU ESCAPED THE ROOM!");
+        setMessage("YOU ESCAPED THE ROOM!");
       } else {
-        setMessage("❌ Convert JSON values into CSV format.");
+        setMessage("Convert JSON values into CSV format.");
       }
     }
   };
@@ -166,10 +166,10 @@ export default function EscapeRoomPage() {
     <div className="min-h-screen flex flex-col text-white">
       <Header darkMode={true} />
 
-      {/* ✅ TOP RIGHT LEADERBOARD */}
+      {/* TOP RIGHT LEADERBOARD */}
       <div className="fixed top-[120px] right-6 z-[999] bg-black/90 border border-yellow-400 p-4 rounded text-sm w-[280px]">
         <h2 className="text-yellow-300 font-bold text-center mb-2">
-          🏆 Leaderboard (Fastest)
+          Leaderboard (Fastest)
         </h2>
 
         {leaderboard.length === 0 && (
@@ -189,7 +189,7 @@ export default function EscapeRoomPage() {
         ))}
       </div>
 
-      {/* ✅ TOP LEFT TIMER */}
+      {/* TOP LEFT TIMER */}
       <div className="fixed top-[120px] left-6 z-50 bg-black/80 border border-red-400 p-3 rounded text-sm space-y-2">
         <div className="font-mono text-lg text-white">⏱ {formatTime()}</div>
 
@@ -210,7 +210,7 @@ export default function EscapeRoomPage() {
         </button>
       </div>
 
-      {/* ✅ ESCAPE ROOM IMAGE */}
+      {/* ESCAPE ROOM IMAGE */}
       <div
         className="relative w-full h-[calc(100vh-120px)] overflow-hidden"
         style={{
@@ -243,27 +243,27 @@ export default function EscapeRoomPage() {
           />
         )}
 
-        {/* ✅ TASK POPUP WITH QUESTIONS RESTORED */}
+        {/* TASK POPUP WITH QUESTIONS RESTORED */}
         {showTask && (
           <div className="absolute inset-0 flex items-center justify-center z-30">
             <div className="bg-black/90 border border-red-500 p-8 rounded-xl w-[600px]">
               {timeTaken !== null && (
                 <div className="text-center text-green-300 mb-2 font-mono">
-                  ✅ Time Taken: {Math.floor(timeTaken / 60)}m {timeTaken % 60}s
+                  Time Taken: {Math.floor(timeTaken / 60)}m {timeTaken % 60}s
                 </div>
               )}
 
               {playerRank !== null && (
                 <div className="text-center text-yellow-300 mb-2 font-bold">
-                  🏆 You placed #{playerRank}
+                  You placed #{playerRank}
                 </div>
               )}
 
               <h1 className="text-2xl font-bold text-red-400 mb-4 text-center">
-                🔐 Escape Room Challenge
+                Escape Room Challenge
               </h1>
 
-              {/* ✅ QUESTIONS RESTORED */}
+              {/* QUESTIONS RESTORED */}
               <div className="mb-4 p-4 border border-white rounded text-sm">
                 {stage === 1 && (
                   <>
@@ -314,12 +314,12 @@ export default function EscapeRoomPage() {
           </div>
         )}
 
-        {/* ✅ FAIL SCREEN */}
+        {/* FAIL SCREEN */}
         {failed && (
           <div className="absolute inset-0 flex items-center justify-center z-40">
             <div className="bg-black/95 border border-red-600 p-10 rounded-xl w-[600px] text-center">
               <h1 className="text-3xl font-bold text-red-500 mb-4">
-                ❌ YOU FAILED THE CHALLENGE
+                 YOU FAILED THE CHALLENGE
               </h1>
               <p className="text-gray-200 mb-6">
                 Time has run out. The room remains locked.
